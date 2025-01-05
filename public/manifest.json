@@ -1,0 +1,17 @@
+{
+    "name": "Masjid App",
+    "short_name": "Masjid App",
+    "start_url": "/index.php",
+    "background_color": "#6777ef",
+    "description": "Masjid App description",
+    "display": "fullscreen",
+    "theme_color": "#6777ef",
+    "icons": [
+        {
+            "src": "logo.PNG",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}
