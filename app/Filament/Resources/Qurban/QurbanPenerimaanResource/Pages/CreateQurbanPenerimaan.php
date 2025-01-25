@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Qurban\QurbanPenerimaanResource\Pages;
 
 use Alkoumi\LaravelHijriDate\Hijri;
 use App\Filament\Resources\Qurban\QurbanPenerimaanResource;
+use App\Helpers\Helper;
 use App\Models\Qurban\QurbanPenerimaan;
 use Carbon\Carbon;
 use Filament\Actions;
@@ -14,16 +15,15 @@ class CreateQurbanPenerimaan extends CreateRecord
 {
     protected static string $resource = QurbanPenerimaanResource::class;
 
-    public static function beforeCreate(Forms\Actions\CreateAction $action, array $data): array
+    protected function mutateFormDataBeforeCreate(array $data): array
     {
-        $date = Carbon::now()->format('Y');
-        $hijri_year = Hijri::Date($date);
+        $date = Carbon::now();
+        $nowHijriyear = Hijri::Date('Y', $date);
 
         $data['amil'] = auth()->user()->id;
-        $data['hijri'] = $hijri_year; // Hijri year
-        $data['nomor_hewan'] = QurbanPenerimaan::where('hijri', $hijri_year)
-            ->where('hewan', $data['hewan'])
-            ->count() + 1; // Get the count of existing records for this year and type, and increment by 1
+
+        $data['hijri'] = Hijri::ShortDate($date); // Hijri year
+        $data['nomor_hewan'] = Helper::qurbanNomorHewan(new QurbanPenerimaan(), $nowHijriyear, $data['jenis_hewan']);
 
         return $data;
     }

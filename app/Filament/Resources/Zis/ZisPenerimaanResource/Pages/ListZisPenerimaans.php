@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Builder;
 class ListZisPenerimaans extends ListRecords
 {
     use ExposesTableToWidgets ;
+    
     protected static string $resource = ZisPenerimaanResource::class;
 
     protected function getHeaderActions(): array

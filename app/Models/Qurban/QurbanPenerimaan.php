@@ -2,6 +2,7 @@
 
 namespace App\Models\Qurban;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -26,5 +27,9 @@ class QurbanPenerimaan extends Model
         'photo_hewan',
 
     ];
+
+    public function nama_amil(){
+        return $this->belongsTo(User::class, 'amil');
+    }
 
 }

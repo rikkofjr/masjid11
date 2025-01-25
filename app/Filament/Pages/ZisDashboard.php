@@ -8,6 +8,7 @@ use App\Filament\Widgets\ZisOverview;
 use App\Models\Bendahara\JenisPembayaran;
 use App\Models\Zis\JenisZis;
 use App\Models\Zis\PembayaranZis;
+use App\Models\Zis\ZisPenerimaan;
 use Carbon\Carbon;
 use Filament\Facades\Filament;
 use Filament\Infolists\Components\Section;
@@ -32,7 +33,7 @@ class ZisDashboard extends Page
 
     protected static string $view = 'filament.pages.zis-dashboard';
 
-    protected static ?string $model = PembayaranZis::class;
+    protected static ?string $model = ZisPenerimaan::class;
 
 
     protected static ?string $title = 'Laporan Penerimaan Harian';
@@ -45,7 +46,7 @@ class ZisDashboard extends Page
 
         $jenisPembayaran = JenisPembayaran::all();
         $jenisZis = JenisZis::all();
-        $pembayaranZis = PembayaranZis::all();
+        $pembayaranZis = ZisPenerimaan::all();
 
         return [
             'jenisZis' => $jenisZis,
@@ -65,7 +66,7 @@ class ZisDashboard extends Page
 
         foreach ($jenisZis as $jenis) {
             // Query for each jenisZis
-            $zisHarian = PembayaranZis::select(
+            $zisHarian = ZisPenerimaan::select(
                     DB::raw('DATE(created_at) as date'), 
                     DB::raw('sum(uang) as uang_harian'),
                     DB::raw('sum(uang_infaq) as uang_infaq_harian'),

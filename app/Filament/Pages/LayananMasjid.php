@@ -2,6 +2,11 @@
 
 namespace App\Filament\Pages;
 
+use App\Filament\Widgets\Bendahara\KasOverview;
+use App\Filament\Widgets\Bendahara\PenerimaanKasChart;
+use App\Filament\Widgets\Bendahara\PengeluaranKasChart;
+use App\Filament\Widgets\Jamaah\JamaahOverview;
+use App\Filament\Widgets\PembayaranZisOverview;
 use Filament\Pages\Page;
 
 class LayananMasjid extends Page
@@ -13,5 +18,16 @@ class LayananMasjid extends Page
     public static function getLabel(): string
     {
         return 'Layanan Masjid';
+    }
+
+    public function getHeaderWidgets():array {
+        return [
+            PenerimaanKasChart::class,
+            PengeluaranKasChart::class,
+            KasOverview::class,
+            JamaahOverview::class,
+            
+        ];
+
     }
 }

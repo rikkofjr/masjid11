@@ -105,7 +105,8 @@ class ZisPenerimaanResource extends Resource
                 Tables\Columns\TextColumn::make('nama_amil.name')
                     ->label('Nama Amil')
                     ->searchable(),
-                
+
+         
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
@@ -122,7 +123,9 @@ class ZisPenerimaanResource extends Resource
                     $years = DB::table('tb_zis_penerimaan')
                         ->selectRaw('YEAR(hijri) as year')
                         ->distinct()
-                        ->pluck('year', 'year');
+                        ->pluck('year', 'year')
+                        ->sortDesc();
+                        
                     return $years;
                 })
                 ->default(function(){
