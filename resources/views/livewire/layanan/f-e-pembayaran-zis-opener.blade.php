@@ -9,10 +9,6 @@
                     Masjid Raya 
                 </h1>
 
-                    <p class="font-normal text-gray-400 text-sm md:text-lg mb-5">
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum <br> dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat <br> non proident, sunt in culpa qui officia deserunt mollit anim id est <br> laborum.
-                    </p>
-
                     <a wire:navigate href="{{route('layanan-pembayaran-zis')}}" class="flex items-center justify-center xl:justify-start font-semibold text-black text-lg gap-3 hover:text-white transition ease-in-out duration-300 bg-green-600 outline outline-offset-2 py-5 px-6">
                         Bayar Zakat
                     </a>

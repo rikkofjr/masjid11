@@ -22,6 +22,7 @@ use Filament\Tables\Table;
 use Filament\Widgets\Concerns\InteractsWithPageTable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 

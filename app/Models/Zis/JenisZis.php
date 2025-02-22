@@ -18,7 +18,7 @@ class JenisZis extends Model
     ];
 
     public function zakat(){
-        return $this->hasMany(PembayaranZis::class, 'id_jenis_zis');
+        return $this->hasMany(ZisPenerimaan::class, 'id_jenis_zis');
     }
 
 }

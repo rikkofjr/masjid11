@@ -84,12 +84,12 @@
             </div>
 
             <div class="mt-9 row setup-content {{ $currentStep != 1 ? 'displayNone' : '' }}" id="step-1">
-                <h5 class="text-xl font-sans">Pilih Zakat yang akan kamu bayar Pilih Zakat yang akan kamu bayar</h3>
+                <h5 class="text-xl font-sans">Pilih zakat yang akan kamu bayar</h3><br/><hr/>
                 <div class="mb-5">
 
                     <div class="form-group">
                         <h3 class="mb-5 text-lg font-medium text-gray-900 dark:text-white">Pilih Jenis ZIS</h3>
-                        <ul class="grid w-full gap-6 md:grid-cols-3">
+                        <ul class="grid w-full gap-6 md:grid-cols-3 sm:grid-cols-3">
                             @foreach ($jenis_zis as $item)
                             <li>
                                 <input type="radio" id="{{$item->id}}" name="id_jenis_zis" value="{{$item->id}}" class="hidden peer" wire:model="id_jenis_zis" required />
@@ -109,8 +109,9 @@
                                 <span class="font-medium">{{ $message }}</span>.
                             </div>
                         @enderror                            
-                    </div>                    
-
+                    </div>
+                    <br/>                    
+                    <hr/>
                     <div class="form-group">
                         <h3 class="mb-5 text-lg font-medium text-gray-900 dark:text-white">Pembayaran Menggunakan</h3>
                         <ul class="grid w-full gap-6 md:grid-cols-2">
@@ -127,6 +128,7 @@
                                     
                                 </label>
                             </li>
+                            <!-- Disable zakat beras sementara
                             <li>
                                 <input type="radio" id="beras" wire:model="jenis_pembayaran" name="jenis_pembayaran" value="beras" class="hidden peer" required />
                                 <label for="beras" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
@@ -139,6 +141,7 @@
 
                                 </label>
                             </li>
+                            -->
                         </ul>
 
                         @error('jenis_pembayaran') 
@@ -154,17 +157,37 @@
             </div>
             <div class="mt-9 setup-content {{ $currentStep != 2 ? 'displayNone' : '' }}" id="step-2">
                 <h5 class="text-xl font-sans">Masukan jumlah jiwa & nominal yang kamu bayar</h3>
-
+                <br/><hr/>
                 <div class="mb-5">
-                    <div class="form-group">
-                        <label for="large-input" class="mb-5 text-lg font-medium text-gray-900 dark:text-white">Jumlah Jiwa yang akan dibayarkan</label>
-                        <input type="number" wire:model="jumlah_jiwa" id="base-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    </div>
+                    
                     
                     <!--ambil nilai zakat fitrah -->
                     
                     @if($jenis_pembayaran === 'uang')
                         @if($id_jenis_zis === $ambil_zakat_fitrah->id)
+
+                            <div class="form-group">
+                                
+                                <label for="large-input" class="mb-5 text-lg font-medium text-gray-900 dark:text-white">Jumlah Jiwa yang akan dibayarkan</label>
+                                <br>
+
+                                <div class="">
+                                    <div class="relative flex items-center max-w-[12rem]">
+                                        <button wire:click="decrement" type="button" id="decrement-button" data-input-counter-decrement="quantity-input" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                                            <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16"/>
+                                            </svg>
+                                        </button>
+                                        <input type="number" wire:model="jumlah_jiwa" id="quantity-input" data-input-counter aria-describedby="helper-text-explanation" class="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="999" required />
+                                        <button wire:click="increment" type="button" id="increment-button" data-input-counter-increment="quantity-input" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                                            <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
                             <!-- Jika yang dipilih adalah Zakat Fitrah-->
                             <h5 class="mb-5 text-lg font-medium text-gray-900 dark:text-white">Pilih nominal uang perjiwa</h5>
                             <ul class="grid w-full gap-6 md:grid-cols-3">
@@ -207,7 +230,7 @@
                     
                         @else
                         
-                            <h5>Masukan nominaal uangnya</h5>
+                            <input type="hidden" value="1" wire:model="jumlah_jiwa" id="base-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <div class="form-group">
                                 <label for="uang_perjiwa" class="mb-5 text-lg font-medium text-gray-900 dark:text-white">Masukan Nominal Uang Zakat</label>
                                 <input type="text" oninput="formatNumber()" id="numericInput" placeholder="Hanya tulis angka" wire:model="uang_perjiwa" autocomplete="off" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -234,7 +257,9 @@
             <div class="mt-9 setup-content {{ $currentStep != 3 ? 'displayNone' : '' }}" id="step-3">
                 <div class="mb-5 grid-cols-1">
                 
-                    <h3> Step 3</h3>
+                    <h5 class="text-xl font-sans">Masukan Identitas</h3>
+                        <br/><hr/>
+
                     <div class="form-group">
                         <label for="atas_nama" class="mb-5 text-lg font-medium text-gray-900 dark:text-white">Atas Nama</label>
                         <input type="text" placeholder="Contoh : Joko (untuk diri sendiri) atau Kel. Joko (Untuk Keluarga)" wire:model="atas_nama" id="base-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -259,7 +284,7 @@
             <div class="mt-9 setup-content {{ $currentStep != 4 ? 'displayNone' : '' }}" id="step-4">
                 <div class="mb-5 grid-cols-1">
                 
-                    <h3> Infaq </h3>
+                    <h3> - </h3>
                     
                     
                     <div class="form-group">
@@ -275,11 +300,12 @@
                                     decimalSeparator: '.',
                                     decimalPlaces: 2
                                 });
-                                new AutoNumeric('#uang_perjiwas', {
-                                    digitGroupSeparator: ',',
-                                    decimalSeparator: '.',
-                                    decimalPlaces: 2
-                                });
+                                
+                                // new AutoNumeric('#uang_perjiwas', {
+                                //     digitGroupSeparator: ',',
+                                //     decimalSeparator: '.',
+                                //     decimalPlaces: 2
+                                // });
 
                                 function formatNumber() {
                                     let input = document.getElementById('numericInput');

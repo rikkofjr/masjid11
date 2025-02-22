@@ -41,6 +41,17 @@ class FEPembayaranZis extends Component
 
         public $selectedCategoryId;
     
+
+    public function increment()
+    {
+        $this->jumlah_jiwa++;
+    }
+    
+    public function decrement()
+    {
+        $this->jumlah_jiwa--;
+    } 
+        
     public function back($step)
     {
         $this->currentStep = $step;    

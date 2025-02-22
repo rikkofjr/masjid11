@@ -10,6 +10,7 @@ use App\Models\Bendahara\TransaksiKas;
 use Carbon\Carbon;
 use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Field;
 use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
@@ -78,16 +79,33 @@ class TransaksiKasResource extends Resource
                     TextInput::make('keterangan')
                         ->label('Keterangan Transaksi')
                         ->required(),
-                    
-                    Textarea::make('keterangan_tambahan')
-                        ->label('Keterangan Tambahan'),
 
+                    
                     TextInput::make('uang')
                         ->label('Jumlah Uang')
                         ->mask(RawJs::make('$money($input)'))
                         ->stripCharacters(',')
                         ->numeric()
                         ->visibleOn('create'),
+
+                    TextInput::make('pengeluaran')
+                        ->label('Jumlah Uang (Pengeluaran)')
+                        ->mask(RawJs::make('$money($input)'))
+                        ->stripCharacters(',')
+                        ->numeric()
+                        ->visible(fn ($get) => $form('tipe') === 'pengeluaran' && $form->isEdit())
+                        ->required()
+                        ->visibleOn('edit'), // Only visible in edit page
+                    
+                    TextInput::make('penerimaan')
+                        ->label('Jumlah Uang (penerimaan)')
+                        ->mask(RawJs::make('$money($input)'))
+                        ->stripCharacters(',')
+                        ->numeric()
+                        ->visible(fn ($get) => $get('tipe') === 'penerimaan' && $form->isEdit())
+                        ->required()
+                        ->visibleOn('edit'), // Only visible in edit page
+                
                 ]),
             
             ]);

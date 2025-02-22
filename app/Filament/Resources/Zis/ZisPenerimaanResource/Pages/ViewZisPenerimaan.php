@@ -3,17 +3,11 @@
 namespace App\Filament\Resources\Zis\ZisPenerimaanResource\Pages;
 
 use App\Filament\Resources\Zis\ZisPenerimaanResource;
-use Filament\Actions;
-use Filament\Resources\Pages\ViewRecord;
+use Filament\Resources\Pages\Page;
 
-class ViewZisPenerimaan extends ViewRecord
+class ViewZisPenerimaan extends Page
 {
     protected static string $resource = ZisPenerimaanResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            Actions\EditAction::make(),
-        ];
-    }
+    protected static string $view = 'filament.resources.zis.zis-penerimaan-resource.pages.view-zis-penerimaan';
 }

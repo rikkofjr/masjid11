@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Filament\Pages;
+namespace App\Filament\Resources\Zis\ZisPenerimaanResource\Pages;
+
+use App\Filament\Resources\Zis\ZisPenerimaanResource;
 
 use Alkoumi\LaravelHijriDate\Hijri;
 use App\Filament\Widgets\PembayaranZisOverview;
@@ -31,9 +33,9 @@ class ZisDashboard extends Page
 
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
-    protected static string $view = 'filament.pages.zis-dashboard';
+    protected static string $view = 'filament.resources.zis.zis-penerimaan-resource.pages.zis-dashboard';
 
-    protected static ?string $model = ZisPenerimaan::class;
+    protected static string $resource = ZisPenerimaanResource::class;
 
 
     protected static ?string $title = 'Laporan Penerimaan Harian';

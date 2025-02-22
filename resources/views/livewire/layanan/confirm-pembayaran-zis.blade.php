@@ -55,6 +55,12 @@
 
             <br/>
             @if($id->status_pembayaran == "PENDING")
+
+            <a href="{{route('layanan-pembayaran-zis-opener')}}"
+                class="focus:outline-none text-white bg-gray-200 hover:bg-red-300 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800 nextBtn mt-5 pull-right"    
+                type="button">
+                    Batal
+                </a>
                 
                 <button 
                 class="focus:outline-none text-white bg-red-700 hover:bg-red-300 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800 nextBtn mt-5 pull-right"    
