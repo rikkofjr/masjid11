@@ -1,3 +1,3 @@
 <x-filament-panels::page>
-    ih tai
+    ih waaw
 </x-filament-panels::page>

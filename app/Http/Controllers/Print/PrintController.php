@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Print;
 
 use App\Http\Controllers\Controller;
+use App\Models\Bendahara\JenisPembayaran;
 use App\Models\Zis\PembayaranZis;
 use App\Models\Zis\ZisPenerimaan;
 use Illuminate\Http\Request;
@@ -39,6 +40,8 @@ class PrintController extends Controller
         $maxCharsPerLine = 32;
         
         $zisQuery = ZisPenerimaan::where('id', $id)->first();
+        $id_jenis_pembayaran_qris = JenisPembayaran::where('short_name', 'qris')->pluck('id')->first();
+        $jenis_pembayaran_cash = JenisPembayaran::where('short_name', 'qris')->pluck('id')->first();
         $text_nama_lain = $zisQuery->nama_lain;
         $jenis_zakat = $zisQuery->jenis_zis->nama;
         $nama_amil = $zisQuery->nama_amil->nama;
@@ -94,19 +97,14 @@ class PrintController extends Controller
                 $printer->text(number_format($zisQuery->uang_infaq)."\n" );
 
 
-                $printer->setJustification(Printer::JUSTIFY_LEFT);
-                    $printer->text("Biaya Adminstratif QRIS (0.7%) \n" );
-                    $printer->text("Total Keseluruhan: \n" );
-                    $printer->setJustification(Printer::JUSTIFY_RIGHT);
-                    $printer->text(number_format($total_yang_dibayar)."\n" );
-
-                if($zisQuery->id_jenis_pembayaran == "9d72cf61-1e33-49cb-8473-1ddb24305c7f"){
+                if($zisQuery->id_jenis_pembayaran == $id_jenis_pembayaran_qris){
                     $printer->setJustification(Printer::JUSTIFY_LEFT);
                     $printer->text("Biaya Adminstratif QRIS (0.7%) \n" );
                     $printer->text("Total Keseluruhan: \n" );
                     $printer->setJustification(Printer::JUSTIFY_RIGHT);
                     $printer->text(number_format($total_yang_dibayar)."\n" );
                 }
+                
             
             }
             
