@@ -114,7 +114,8 @@ class PrintController extends Controller
             $printer->text($date . "\n");
             $printer->text("Amil : " . $nama_amil );
             $printer->text("\n");
-            $printer->text("Ini adalah uji coba dari localhost\n");
+            $printer->text("Terimakasih telah melakukan Zakat\n");
+            $printer->text("Semoga hari anda diberkahi\n");
             $printer -> cut();
             $printer -> close();
 
