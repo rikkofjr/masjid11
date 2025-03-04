@@ -22,6 +22,7 @@ class JenisZisResource extends Resource
 
     protected static ?string $navigationGroup = 'ZIS';
 
+    protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form
     {

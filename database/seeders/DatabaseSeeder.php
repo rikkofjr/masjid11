@@ -24,10 +24,9 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('123456'),
             'email' => 'admin@admin.com',
         ]);
-
-        $role = Role::create(['name' => 'Admin']);
         $permissionAdminPanel = Permission::create(['name' => 'Access Admin Panel']);
         $permissionManageUser = Permission::create(['name' => 'Manage : User']);
+        $role = Role::create(['name' => 'Admin']);
         $user->assignRole($role);
         $role->givePermissionTo($permissionAdminPanel);
         $role->givePermissionTo($permissionManageUser);

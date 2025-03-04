@@ -31,6 +31,7 @@ class ZisPenerimaanResource extends Resource
     protected static ?string $model = ZisPenerimaan::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?int $navigationSort = 1;
     protected static ?string $navigationGroup = 'ZIS';
     protected static ?string $title = 'Penerimaan Zis';
     protected static ?string $navigationLabel = 'Penerimaan Zis';
