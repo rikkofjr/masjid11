@@ -17,19 +17,16 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
-
+        $this->call(BendaharaSeeder::class);
+        $this->call(RolesPermissionSeeder::class);
+        
        $user =  User::create([
             'username' => 'admin',
             'name' => 'Admin',
             'password' => Hash::make('123456'),
             'email' => 'admin@admin.com',
         ]);
-        $permissionAdminPanel = Permission::create(['name' => 'Access Admin Panel']);
-        $permissionManageUser = Permission::create(['name' => 'Manage : User']);
-        $role = Role::create(['name' => 'Admin']);
-        $user->assignRole($role);
-        $role->givePermissionTo($permissionAdminPanel);
-        $role->givePermissionTo($permissionManageUser);
+        $user->assignRole('Admin');
 
         $user1 =  User::create([
             'username' => 'supportadmin',
@@ -37,12 +34,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('123456'),
             'email' => 'supportadmin@admin.com',
         ]);
-        $role1 = Role::create(['name' => 'Support Admin']);
-        $user1->assignRole($role1);
-        $role1->givePermissionTo($permissionAdminPanel);
-
-        //Ambil seeder tempat lain
-        $this->call(BendaharaSeeder::class);
+        $user1->assignRole('Support Admin');
     }
 }
 
