@@ -4,8 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
+use App\Models\Role;
+use App\Models\Permission;
 
 class RolesPermissionSeeder extends Seeder
 {
@@ -22,7 +22,7 @@ class RolesPermissionSeeder extends Seeder
         $role = Role::create(['name' => 'Admin']);
         $role->givePermissionTo(Permission::all());
 
-        $role = Role::create(['name' => 'DKM-Bendahara'])
+        $role = Role::create(['name' => 'Support Admin'])
         ->givePermissionTo(['Access Admin Panel']);
 
     }
