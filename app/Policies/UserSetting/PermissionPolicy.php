@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Policies\Usersetting;
+namespace App\Policies\UserSetting;
 
 use Spatie\Permission\Models\Permission;
 use App\Models\User;
