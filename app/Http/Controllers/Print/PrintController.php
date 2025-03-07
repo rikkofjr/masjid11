@@ -44,7 +44,7 @@ class PrintController extends Controller
         $jenis_pembayaran_cash = JenisPembayaran::where('short_name', 'qris')->pluck('id')->first();
         $text_nama_lain = $zisQuery->nama_lain;
         $jenis_zakat = $zisQuery->jenis_zis->nama;
-        $nama_amil = $zisQuery->nama_amil->nama;
+        $nama_amil = $zisQuery->nama_amil->name;
         $removelinebreak_text_nama_lain = preg_replace('/\s+/', ' ', $text_nama_lain);
         $biaya_administrasi_qris = 0.007;
         $hitung_biaya_administrasi = ($zisQuery->uang + $zisQuery->uang_infaq) * $biaya_administrasi_qris;
