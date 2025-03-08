@@ -53,7 +53,7 @@
     </style>
 
 
-<div class="w-full h-screen p-12">
+<div class="my-8 py-10 md:py-1">
     <div class="container bg-white drop-shadow-xl py-10 px-5 min-h-80">
         <div class="items-center py-3">
             @if(!empty($successMessage))
@@ -66,29 +66,30 @@
                 <div class="stepwizard-row setup-panel">
                     <div class="stepwizard-step">
                         <a href="#step-1" type="button" class="btn btn-circle {{ $currentStep != 1 ? 'btn-default' : 'btn-primary' }}">1</a>
-                        <p>Layanan Zis</p>
+                        <p>1</p>
                     </div>
                     <div class="stepwizard-step">
                         <a href="#step-2" type="button" class="btn btn-circle {{ $currentStep != 2 ? 'btn-default' : 'btn-primary' }}">2</a>
-                        <p>Jumlah dibayarkan</p>
+                        <p>2</p>
                     </div>
                     <div class="stepwizard-step">
                         <a href="#step-3" type="button" class="btn btn-circle {{ $currentStep != 3 ? 'btn-default' : 'btn-primary' }}">3</a>
-                        <p>Step 3</p>
+                        <p> 3</p>
                     </div>
                     <div class="stepwizard-step">
                         <a href="#step-4" type="button" class="btn btn-circle {{ $currentStep != 4 ? 'btn-default' : 'btn-primary' }}" disabled="disabled">4</a>
-                        <p>Step 4</p>
+                        <p> 4</p>
                     </div>
                 </div>
             </div>
 
             <div class="mt-9 row setup-content {{ $currentStep != 1 ? 'displayNone' : '' }}" id="step-1">
-                <h5 class="text-xl font-sans">Pilih zakat yang akan kamu bayar</h3><br/><hr/>
+                <h5 class="text-xl font-sans">-</h3><hr/>
+
                 <div class="mb-5">
 
-                    <div class="form-group">
-                        <h3 class="mb-5 text-lg font-medium text-gray-900 dark:text-white">Pilih Jenis ZIS</h3>
+                    <div class="form-group py-6">
+                        <h3 class="mb-5 text-lg font-medium font-size gray-900 dark:text-white">Pilih Jenis ZIS</h3>
                         <ul class="grid w-full gap-6 md:grid-cols-3 sm:grid-cols-3">
                             @foreach ($jenis_zis as $item)
                             <li>
@@ -110,9 +111,8 @@
                             </div>
                         @enderror                            
                     </div>
-                    <br/>                    
-                    <hr/>
-                    <div class="form-group">
+
+                    <div class="form-group py-6">
                         <h3 class="mb-5 text-lg font-medium text-gray-900 dark:text-white">Pembayaran Menggunakan</h3>
                         <ul class="grid w-full gap-6 md:grid-cols-2">
                             <li>
@@ -156,7 +156,7 @@
                 </div>
             </div>
             <div class="mt-9 setup-content {{ $currentStep != 2 ? 'displayNone' : '' }}" id="step-2">
-                <h5 class="text-xl font-sans">Masukan jumlah jiwa & nominal yang kamu bayar</h3>
+                <h5 class="text-xl font-sans">-</h3>
                 <br/><hr/>
                 <div class="mb-5">
                     
@@ -166,9 +166,9 @@
                     @if($jenis_pembayaran === 'uang')
                         @if($id_jenis_zis === $ambil_zakat_fitrah->id)
 
-                            <div class="form-group">
+                            <div class="form-group py-6">
                                 
-                                <label for="large-input" class="mb-5 text-lg font-medium text-gray-900 dark:text-white">Jumlah Jiwa yang akan dibayarkan</label>
+                                <label class="mb-5 text-lg font-medium font-size gray-900 dark:text-white">Jumlah Jiwa yang akan dibayarkan</label>
                                 <br>
 
                                 <div class="">
@@ -189,7 +189,7 @@
                             </div>
 
                             <!-- Jika yang dipilih adalah Zakat Fitrah-->
-                            <h5 class="mb-5 text-lg font-medium text-gray-900 dark:text-white">Pilih nominal uang perjiwa</h5>
+                            <h5 class="mb-5 text-lg font-medium font-size gray-900 dark:text-white">Pilih nominal uang perjiwa</h5>
                             <ul class="grid w-full gap-6 md:grid-cols-3">
 
                                 <li>
@@ -227,15 +227,24 @@
                                 </li>
                                 
                             </ul>
+                            @error('uang_perjiwa') 
+                                <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                                    <span class="font-medium">{{ $message }}</span>.
+                                </div>
+                            @enderror 
                     
                         @else
                         
                             <input type="hidden" value="1" wire:model="jumlah_jiwa" id="base-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <div class="form-group">
+                            <div class="form-group py-6">
                                 <label for="uang_perjiwa" class="mb-5 text-lg font-medium text-gray-900 dark:text-white">Masukan Nominal Uang Zakat</label>
                                 <input type="text" oninput="formatNumber()" id="numericInput" placeholder="Hanya tulis angka" wire:model="uang_perjiwa" autocomplete="off" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
-                            
+                            @error('uang_perjiwa') 
+                                <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                                    <span class="font-medium">{{ $message }}</span>.
+                                </div>
+                            @enderror 
                         
                         @endif
                     
@@ -258,7 +267,7 @@
                 <div class="mb-5 grid-cols-1">
                 
                     <h5 class="text-xl font-sans">Masukan Identitas</h3>
-                        <br/><hr/>
+                        <br/><hr/><br/>
 
                     <div class="form-group">
                         <label for="atas_nama" class="mb-5 text-lg font-medium text-gray-900 dark:text-white">Atas Nama</label>

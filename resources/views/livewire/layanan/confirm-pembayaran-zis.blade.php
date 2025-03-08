@@ -1,5 +1,5 @@
 <div>
-    <div class="container w-full h-screen p-12">
+    <div class="my-8 py-10 md:py-1">
         <div class="container drop-shadow-xl py-10 px-5 min-h-80 items-center">
             <div class="bg-white px-5 py-5">
                 <h2 class="font-semibold text-gray-700 text-xl md:text-3xl mb-5">

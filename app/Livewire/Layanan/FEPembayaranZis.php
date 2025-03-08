@@ -49,7 +49,10 @@ class FEPembayaranZis extends Component
     
     public function decrement()
     {
-        $this->jumlah_jiwa--;
+        if ($this->jumlah_jiwa > 1) {
+            $this->jumlah_jiwa--;
+        }
+        
     } 
         
     public function back($step)
@@ -69,6 +72,7 @@ class FEPembayaranZis extends Component
     {
         $validatedData = $this->validate([
             'jumlah_jiwa' => 'required',
+            'uang_perjiwa' => 'required',
         ]);
         $this->currentStep = 3;
     }
