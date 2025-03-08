@@ -152,7 +152,7 @@ class FEPembayaranZis extends Component
         // Set sanitization on (default)
         Config::$isSanitized = config('midtrans.isSanitized');
         // Set 3DS transaction for credit card to true
-        Config::$is3ds = true;
+        Config::$is3ds = config('midtrans.is3ds');
 
         $params = array(
             'transaction_details' => array(

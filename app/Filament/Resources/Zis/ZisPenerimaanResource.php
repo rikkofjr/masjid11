@@ -18,6 +18,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
 use Filament\Widgets\Concerns\InteractsWithPageTable;
 use Illuminate\Database\Eloquent\Builder;
@@ -148,6 +149,11 @@ class ZisPenerimaanResource extends Resource
                 SelectFilter::make('id_jenis_pembayaran')
                 ->label('Jenis Pembayaran')
                 ->relationship('jenis_pembayaran', 'nama'),
+            ])
+            ->groups([
+                Group::make('created_at')
+                    ->date()
+                    ->label('Tanggal Transaksi'),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),

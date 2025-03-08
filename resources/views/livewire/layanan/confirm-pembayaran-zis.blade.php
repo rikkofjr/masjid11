@@ -67,8 +67,8 @@
                 id="pay-button"" type="button">
                     Lakukan Pembayaran
                 </button>
-
-                <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{env('MIDTRANS_CLIENT_KEY')}}"></script>
+                <!-- https://app.sandbox.midtrans.com/snap/snap.js -->
+                <script src="https://app.midtrans.com/snap/snap.js" data-client-key="{{env('MIDTRANS_CLIENT_KEY')}}"></script>
                     <script type="text/javascript">
                       document.getElementById('pay-button').onclick = function(){
                         // SnapToken acquired from previous step
