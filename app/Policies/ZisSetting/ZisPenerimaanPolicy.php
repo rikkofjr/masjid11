@@ -58,7 +58,7 @@ class ZisPenerimaanPolicy
      */
     public function restore(User $user, ZisPenerimaan $zisPenerimaan): bool
     {
-        //
+        return $user->hasRole(['Admin']);
     }
 
     /**
@@ -66,6 +66,6 @@ class ZisPenerimaanPolicy
      */
     public function forceDelete(User $user, ZisPenerimaan $zisPenerimaan): bool
     {
-        //
+        return $user->hasRole(['Admin']);
     }
 }
