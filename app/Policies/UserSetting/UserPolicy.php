@@ -36,7 +36,23 @@ class UserPolicy
      */
     public function update(User $user, User $model)
     {
-        return $user->can(['Manage : User']);
+        if ($model->username === 'admin' && !$user->hasRole('Admin')) {
+            return false; // Menolak akses jika yang login bukan Admin dan mencoba mengedit admin
+        }
+    
+        // Jika yang login adalah Admin, mereka dapat mengedit siapa saja
+        if ($user->hasRole('Admin')) {
+            return true;
+        }
+    
+        // Jika yang login adalah Support Admin, mereka bisa mengedit user lain kecuali admin
+        if ($user->hasRole('Support Admin')) {
+            return $model->username !== 'admin'; // Tidak bisa mengedit user dengan username 'admin'
+        }
+    
+        // Jika tidak ada peran yang memenuhi, akses ditolak
+        return false;
+        
     }
 
     /**

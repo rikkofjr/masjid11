@@ -2,12 +2,13 @@
 
 namespace App\Policies\UserSetting;
 
-use Spatie\Permission\Models\Permission;
 use App\Models\User;
+use Spatie\Permission\Models\Role;
+
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Auth\Access\Response;
 
-class PermissionPolicy
+class RolePolicy
 {
     use HandlesAuthorization;
     /**
@@ -21,7 +22,7 @@ class PermissionPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Permission $permission): bool
+    public function view(User $user, Role $role): bool
     {
         return $user->hasRole(['Admin']);
     }
@@ -37,7 +38,7 @@ class PermissionPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Permission $permission): bool
+    public function update(User $user, Role $role): bool
     {
         return $user->hasRole(['Admin']);
     }
@@ -45,7 +46,7 @@ class PermissionPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Permission $permission): bool
+    public function delete(User $user, Role $role): bool
     {
         return $user->hasRole(['Admin']);
     }
@@ -53,7 +54,7 @@ class PermissionPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Permission $permission): bool
+    public function restore(User $user, Role $role): bool
     {
         return $user->hasRole(['Admin']);
     }
@@ -61,7 +62,7 @@ class PermissionPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Permission $permission): bool
+    public function forceDelete(User $user, Role $role): bool
     {
         return $user->hasRole(['Admin']);
     }

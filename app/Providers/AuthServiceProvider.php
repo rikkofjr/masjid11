@@ -3,11 +3,14 @@
 namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
-use App\Policies\UserSetting\UserPolicy;
+
+// use App\Models\Role;
 use App\Models\User;
-use App\Policies\Usersetting\PermissionPolicy;
+use App\Models\Zis\JenisZis;
+use App\Models\Zis\ZisPenerimaan;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -21,6 +24,9 @@ class AuthServiceProvider extends ServiceProvider
         //'App\Models\User::class' => 'App\Policies\UserSetting\UserPolicy::class',
         User::class => 'App\Policies\UserSetting\UserPolicy',
         Permission::class => 'App\Policies\UserSetting\PermissionPolicy',
+        Role::class =>'App\Policies\UserSetting\RolePolicy',
+        ZisPenerimaan::class =>'App\Policies\ZisSetting\ZisPenerimaanPolicy',
+        JenisZis::class =>'App\Policies\ZisSetting\JenisZisPolicy',
     ];
 
     /**
@@ -28,6 +34,6 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+
     }
 }

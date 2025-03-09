@@ -57,8 +57,8 @@ class User extends Authenticatable implements FilamentUser
     {
 
         // return str_ends_with($this->email, '@admin.com') && $this->hasVerifiedEmail();
-         return str_ends_with($this->email, '@admin.com');
-        //return $this->can(['Access Admin Panel']);
+        //  return str_ends_with($this->email, '@admin.com');
+        return $this->can(['Access Admin Panel']);
         
     }
 }
