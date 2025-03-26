@@ -140,7 +140,7 @@ class CreateZisPenerimaan extends CreateRecord
 
                 /// Ambil nominal zakat uang
                 Section::make('Nominal Zakat Uang')
-                ->visible(fn (Get $get) => $get('uang_perjiwa') >= 1)
+                ->visible(fn (Get $get) => $get('uang_perjiwa') >= 1 || $get('uang_infaq') >= 1 )
                 ->schema([
                     
                     ///input uang zakat

@@ -53,7 +53,7 @@ class JenisZisPolicy
      */
     public function restore(User $user, JenisZis $jenisZis): bool
     {
-        return $user->can(['Manage : Zis']);
+        return $user->hasRole(['Admin']);
     }
 
     /**
@@ -61,6 +61,6 @@ class JenisZisPolicy
      */
     public function forceDelete(User $user, JenisZis $jenisZis): bool
     {
-        return $user->can(['Manage : User']);
+        return $user->hasRole(['Admin']);
     }
 }
