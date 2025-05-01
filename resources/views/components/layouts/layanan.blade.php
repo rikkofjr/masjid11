@@ -16,6 +16,7 @@
         <main class="">
             
             {{ $slot }}
+            
         </main>
                     
         @livewireScripts

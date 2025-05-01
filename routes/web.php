@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Display\DisplayController;
 use App\Http\Controllers\Payment\MidtransPaymentController;
 use App\Http\Controllers\Print\PrintController;
 use App\Http\Controllers\Zis\ZisController;
@@ -36,6 +37,9 @@ Route::group(['prefix' => 'print'],function(){
     // Route::get('/keluarga/{id}', [AlamatJamaahController::class, 'PrintKeluarga'])->name('print.keluarga');
 });
 
+Route::group(['prefix' => 'display'],function(){
+    Route::get('/', [DisplayController::class, 'index'])->name('display.index');
+});
 
 Route::middleware('auth')->group(function() {
 
