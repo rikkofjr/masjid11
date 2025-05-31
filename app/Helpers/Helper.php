@@ -17,7 +17,7 @@ class Helper {
                     $getLastNumber = (int)filter_var($data->nomor_hewan, FILTER_SANITIZE_NUMBER_INT);
                     $lastNumber = $getLastNumber + 1;    
                 }
-                return $jenis_hewan.$lastNumber;
+                return $jenis_hewan.'-'.$lastNumber;
             break;
 
             case 'Kambing' :
@@ -28,7 +28,7 @@ class Helper {
                     $getLastNumber = (int)filter_var($data->nomor_hewan, FILTER_SANITIZE_NUMBER_INT);
                     $lastNumber = $getLastNumber + 1;    
                 }
-                return $jenis_hewan.$lastNumber;
+                return $jenis_hewan.'-'.$lastNumber;
             break;
         }
         

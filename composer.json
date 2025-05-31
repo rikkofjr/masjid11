@@ -9,6 +9,7 @@
         "alkoumi/laravel-hijri-date": "^1.0",
         "filament/filament": "^3.2",
         "flowframe/laravel-trend": "^0.3.0",
+        "intervention/image": "^3.11",
         "jantinnerezo/livewire-alert": "^3.0",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
@@ -16,6 +17,7 @@
         "midtrans/midtrans-php": "^2.6",
         "mike42/escpos-php": "^4.0",
         "realrashid/sweet-alert": "^7.2",
+        "spatie/laravel-image-optimizer": "^1.8",
         "spatie/laravel-permission": "^6.9"
     },
     "require-dev": {

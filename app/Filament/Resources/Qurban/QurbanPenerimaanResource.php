@@ -6,6 +6,7 @@ use Alkoumi\LaravelHijriDate\Hijri;
 use App\Filament\Resources\Qurban\QurbanPenerimaanResource\Pages;
 use App\Filament\Resources\Qurban\QurbanPenerimaanResource\RelationManagers;
 use App\Helpers\Helper;
+use App\Helpers\ImageHelper;
 use App\Models\Qurban\QurbanPenerimaan;
 use Carbon\Carbon;
 use Filament\Forms;
@@ -17,6 +18,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\DB;
+use Spatie\LaravelImageOptimizer\Facades\ImageOptimizer;
 
 class QurbanPenerimaanResource extends Resource
 {
@@ -59,7 +61,21 @@ class QurbanPenerimaanResource extends Resource
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('photo_hewan')
                     ->image()
-                    ->directory('penerimaan-qurban'),
+                    ->directory('penerimaan-qurban')
+                    ->preserveFilenames()
+                    ->afterStateUpdated(function ($state) {
+                        if ($state) {
+                            $path = storage_path('app/penerimaan-qurban/' . $state);
+
+                            // Resize ke max width 1200px + compress ke 80% ukuran awal
+                            try {
+                                $finalSize = ImageHelper::compressToTargetSize($path, 1200, 0.8, 50);
+                                info("Compress sukses, size akhir: " . $finalSize . " byte");
+                            } catch (\Exception $e) {
+                                report($e);
+                            }
+                        }
+                    }),
             ]);
     }
 
@@ -138,6 +154,11 @@ class QurbanPenerimaanResource extends Resource
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\Action::make('print')
+                    ->label('Print')
+                    ->icon('heroicon-o-printer')
+                    ->url(fn (QurbanPenerimaan $record) => route('print.qurban.detail', $record->id))
+                    ->openUrlInNewTab(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

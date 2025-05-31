@@ -3,6 +3,7 @@
 use App\Http\Controllers\Display\DisplayController;
 use App\Http\Controllers\Payment\MidtransPaymentController;
 use App\Http\Controllers\Print\PrintController;
+use App\Http\Controllers\Qurban\QurbanController;
 use App\Http\Controllers\Zis\ZisController;
 use App\Livewire\Auth\LoginPage;
 use App\Livewire\HomePage;
@@ -23,15 +24,16 @@ Route::get('/coba', function(){
     return view('test-page.test-form');
 });
 
-Route::get('/print/zis/id/{id}', [PrintController::class, 'printZisId'])->name('print-zis-id');
+
 
 Route::group(['prefix' => 'print'],function(){
     //Print Zakat {Fitrah, Mall, Fidyah}
     Route::get('/zakat-jamaah/{id}', [ZisController::class, 'printZakatJamaah'])->name('print.zakat.jamaah');
     Route::get('/zakat-tahun/{year}', [ZisController::class,'printZakatTahun'])->name('print.zakat.tahun');
+    Route::get('/zis/id/{id}', [PrintController::class, 'printZisId'])->name('print-zis-id');
     // //print qurban
     // Route::get('/qurban/{jenis_hewan}', [QurbanController::class, 'printQurbanByThisYear'])->name('print.qurbanRekapJamaah');
-    // Route::get('/qurban/jamaah/{id}', [QurbanController::class, 'printQurbanJamaah'])->name('print.qurban.jamaah');
+    Route::get('/qurban/detail/{id}', [QurbanController::class, 'print'])->name('print.qurban.detail');
 
     // //Print Keluarga atau jamaah
     // Route::get('/keluarga/{id}', [AlamatJamaahController::class, 'PrintKeluarga'])->name('print.keluarga');
