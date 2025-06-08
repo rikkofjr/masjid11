@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\ProfileMasjid;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -35,6 +36,14 @@ class DatabaseSeeder extends Seeder
             'email' => 'supportadmin@admin.com',
         ]);
         $user1->assignRole('Support Admin');
+
+        $user =  ProfileMasjid::create([
+            'username' => 'admin',
+            'name' => 'Admin',
+            'password' => Hash::make('123456'),
+            'email' => 'admin@admin.com',
+        ]);
+        $user->assignRole('Admin');
     }
 }
 

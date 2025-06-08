@@ -37,6 +37,10 @@ class ProfileMasjidResource extends Resource
                     ->required()
                     ->default('-')
                     ->maxLength(255),
+                
+                Forms\Components\FileUpload::make('logo')
+                    ->image()
+                    ->directory('profile-masjid'),
 
                 Forms\Components\TextInput::make('no_handphone')
                     ->required()

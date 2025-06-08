@@ -12,6 +12,7 @@ class ProfileMasjid extends Model
         'alamat_masjid',
         'no_handphone',
         'deskripsi',
+        'logo',
         'is_active'
     ];
 }

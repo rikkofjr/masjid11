@@ -17,6 +17,7 @@
         "midtrans/midtrans-php": "^2.6",
         "mike42/escpos-php": "^4.0",
         "realrashid/sweet-alert": "^7.2",
+        "simplesoftwareio/simple-qrcode": "^4.2",
         "spatie/laravel-image-optimizer": "^1.8",
         "spatie/laravel-permission": "^6.9"
     },

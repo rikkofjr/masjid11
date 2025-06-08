@@ -66,9 +66,8 @@
       margin-top: 3mm;
     }
     .photo img {
-      width: auto;
-      max-width: 65mm;
-      max-height: 50mm;
+      max-width: 50mm;
+      max-height: 40mm;
       border: 1px solid #000;
       object-fit: contain;
     }
@@ -80,13 +79,23 @@
   </style>
 </head>
 <body>
+  <img src="{{ $profileMasjid->logo ? asset('storage/' . $profileMasjid->logo) : asset('img/logo.png') }}" 
+     alt="Watermark" 
+     style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 60%; opacity: 0.04; z-index: -1;">
+
   <div class="nota">
     <div class="header">
-      <h2>Nota Pendataan Hewan Qurban</h2>
-      <p>Panitia Idul Adha {{ explode('-', $data->hijri)[0] }}</p>
+      <div class="header-title">
+        <h2>Nota Pendataan Hewan Qurban</h2>
+        <p>Panitia Idul Adha {{ explode('-', $data->hijri)[0] }}</p>
+      </div>
+      <div class="header-logo" style="margin-top:-6px; position: absolute; top: 5px; right: 10px;">
+        <img src="{{ $profileMasjid->logo ? asset('storage/' . $profileMasjid->logo) : asset('img/logo.png') }}" alt="Logo" height="50px">
+      </div>
     </div>
 
-    <div class="content">
+    <div class="content" style="">
       <div class="left">
         <table class="data-table">
           <tr>
@@ -100,6 +109,10 @@
           <tr>
             <td class="label">Atas Nama</td>
             <td>: {{$data->atas_nama}}</td>
+          </tr>
+          <tr>
+            <td class="label">Alamat</td>
+            <td>: {{$data->alamat}}</td>
           </tr>
           <tr>
             <td class="label">Nama Lain</td>
@@ -123,24 +136,30 @@
             <td>: {{ $data->disaksikan ? '✔️' : 'x' }}</td>
           </tr>
           <tr>
-            <td class="label">Nama Amil</td>
-            <td>: {{$data->nama_amil->name}}</td>
-          </tr>
-          <tr>
             <td class="label">Keterangan</td>
             <td>: {!! nl2br(e($data->keterngan)) !!}</td>
+          </tr>
+          <tr>
+            <td class="label">Panitia</td>
+            <td>: {{$data->nama_amil->name}}</td>
           </tr>
         </table>
       </div>
     </div>
 
-    <div class="photo">
-      <img src="{{ asset('storage/' . $data->photo_hewan) }}" alt="Foto Hewan">
+    <div class="photo" style="display: flex; justify-content: center; align-items: center; gap: 5mm; margin-top: 3mm;">
+      <div>
+        <img src="{{ asset('storage/' . $data->photo_hewan) }}" alt="Foto Hewan" style="max-width: 50mm; max-height: 40mm; border: 1px solid #000; object-fit: contain;">
+      </div>
+      <div>
+        {!! QrCode::size(120)->generate(url('/print/qurban/detail/'.$data->id)) !!}
+      </div>
+      Harap disimpan dengan baik tanda bukti ini  <br>
+      {{$data->created_at}}
     </div>
 
     <div class="footer">
-      Tanda Bukti Ini Disimpan Oleh Panitia Sebagai Arsip Pendataan Hewan Qurban. <br>
-      {{$data->created_at}}
+      
     </div>
   </div>
 </body>

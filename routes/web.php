@@ -41,6 +41,7 @@ Route::group(['prefix' => 'print'],function(){
 
 Route::group(['prefix' => 'display'],function(){
     Route::get('/', [DisplayController::class, 'index'])->name('display.index');
+    Route::get('/2', [DisplayController::class, 'display2'])->name('display.2');
 });
 
 Route::middleware('auth')->group(function() {

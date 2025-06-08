@@ -24,4 +24,11 @@ class DisplayController extends Controller
         // dd($photoDisplayFirst);
         return view('display.display-1', compact('profileMasjid', 'photoDisplayFirst','photoDisplay'));
     }
+    public function display2(){
+        $profileMasjid = $this->ProfileMasjidRepository->first();
+        $photoDisplay = Display::all()->where('is_active', true);
+        $photoDisplayFirst = Display::where('is_active', true)->first();
+        // dd($photoDisplayFirst);
+        return view('display.display-2', compact('profileMasjid', 'photoDisplayFirst','photoDisplay'));
+    }
 }

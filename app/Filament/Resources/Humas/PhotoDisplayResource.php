@@ -29,8 +29,8 @@ class PhotoDisplayResource extends Resource
                     ->columnSpanFull(),
 
                 Forms\Components\FileUpload::make('photo_display')
-                    ->image()
-                    ->directory('/displays/poto')
+                    ->label('Video')
+                    ->directory('/displays/video')
                     ->required(),
                 
                 Forms\Components\Checkbox::make('is_active')
@@ -43,7 +43,7 @@ class PhotoDisplayResource extends Resource
     {
         return $table
             ->columns([
-                ImageColumn::make('photo_display'),
+                ImageColumn::make('photo_display')->label('file'),
                 TextColumn::make('keterangan')
 
             ])

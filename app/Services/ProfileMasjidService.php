@@ -8,7 +8,10 @@ class ProfileMasjidService{
 
     public function getProfileMasjid(){
 
-        return ProfileMasjid::first();
+        return ProfileMasjid::where('is_active', true)
+                ->orderBy('created_at', 'desc')
+                ->limit(1)
+                ->first();
         
     }
 
