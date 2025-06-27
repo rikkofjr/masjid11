@@ -1,4 +1,4 @@
-<div class="container mx-auto p-4 pb-24 relative">
+<div class="container mx-auto p-4 pb-24 relative" wire:poll.500ms>
 
     <!-- Header + Tombol -->
     <div class="flex items-center justify-between mb-4">
