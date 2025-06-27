@@ -15,6 +15,7 @@ class QurbanStock extends Model
         'id',
         'kuantitas',
         'status',
+        'hijri',
         'id_user'
     ];
 

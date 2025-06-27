@@ -28,7 +28,7 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   
         <x-livewire-alert::scripts />
-        
+        <!--
         <script src="{{ asset('/sw.js') }}"></script>
         <script>
         if ("serviceWorker" in navigator) {
@@ -46,5 +46,6 @@
             console.error("Service workers are not supported.");
         }
         </script>
+    -->
     </body>
 </html>

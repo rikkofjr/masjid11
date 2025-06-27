@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Qurban\QurbanPenyimpananResource\RelationManagers;
 
+use Alkoumi\LaravelHijriDate\Hijri;
+use Carbon\Carbon;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Forms\Components\TextInput;
@@ -11,6 +13,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Tables\Actions\Action;
 use Filament\Facades\Filament;
+use Illuminate\Support\Facades\Log;
 
 class StockRelationManager extends RelationManager
 {
@@ -63,10 +66,13 @@ class StockRelationManager extends RelationManager
                             ->default('ok'),
                     ])
                     ->action(function (array $data) {
+                        $date = Carbon::now();
+                        $hijri = Hijri::ShortDate($date);
                         $this->getRelationship()->create([
                             'kuantitas' => abs($data['kuantitas']),
                             'id_user'   => $data['id_user'],
                             'status'    => $data['status'],
+                            'hijri'    => $hijri,
                         ]);
                     }),
 
@@ -86,10 +92,13 @@ class StockRelationManager extends RelationManager
                             ->default('ok'),
                     ])
                     ->action(function (array $data) {
+                        $date = Carbon::now();
+                        $hijri = Hijri::ShortDate($date);
                         $this->getRelationship()->create([
                             'kuantitas' => -abs($data['kuantitas']),
                             'id_user'   => $data['id_user'],
                             'status'    => $data['status'],
+                            'hijri'    => $hijri,
                         ]);
                     }),
             ])
@@ -103,4 +112,19 @@ class StockRelationManager extends RelationManager
                 ]),
             ]);
     }
+
+    public function getTableQuery(): \Illuminate\Database\Eloquent\Builder
+    {
+        $year = Carbon::now();
+        $hijri = Hijri::date('Y', $year);
+        Log::info("Filtering data created_at tahun: " . $hijri);
+
+        return $this->getRelationship()
+            ->getQuery()
+            ->whereYear('hijri', $hijri);
+    }
+
+
+
+
 }

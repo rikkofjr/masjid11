@@ -25,12 +25,17 @@ class QurbanPenerimaan extends Model
         'keterangan',
         'hijri',
         'nomor_hewan',
+        'status_terakhir',
         'photo_hewan',
 
     ];
 
     public function nama_amil(){
         return $this->belongsTo(User::class, 'amil');
+    }
+
+    public function trackings(){
+        return $this->hasMany(QurbanTracking::class, 'id_qurban_penerimaan', 'id')->orderBy('created_at', 'desc');
     }
 
 }

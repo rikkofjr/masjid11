@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('tb_qurban_penyimpanan', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('nama_gudang_penyimpanan')->unique();
+            $table->string('target_stock')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -23,6 +24,7 @@ return new class extends Migration
             $table->string('status');
             $table->foreignUuid('id_qurban_penyimpanan')->references('id')->on('tb_qurban_penyimpanan')->nullable();
             $table->foreignUuid('id_user')->references('id')->on('users')->nullable();
+            $table->date('hijri');
             $table->timestamps();
             $table->softDeletes();
         });

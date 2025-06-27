@@ -37,13 +37,12 @@ class DatabaseSeeder extends Seeder
         ]);
         $user1->assignRole('Support Admin');
 
-        $user =  ProfileMasjid::create([
-            'username' => 'admin',
-            'name' => 'Admin',
-            'password' => Hash::make('123456'),
-            'email' => 'admin@admin.com',
+        $masjid =  ProfileMasjid::create([
+            'nama_masjid' => 'Masjid Al Masjid Dev',
+            'alamat_masjid' => 'Jl. Masjid Dev.',
+            'no_handphone' => '021-0999039309',
+            'is_active' => true,
         ]);
-        $user->assignRole('Admin');
     }
 }
 

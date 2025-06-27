@@ -22,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('tb_profile_masjid', function (Blueprint $table) {
-            //
+             $table->dropColumn('logo');
         });
     }
 };

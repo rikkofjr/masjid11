@@ -8,8 +8,11 @@ use App\Filament\Resources\Qurban\QurbanPenerimaanResource\RelationManagers;
 use App\Helpers\Helper;
 use App\Helpers\ImageHelper;
 use App\Models\Qurban\QurbanPenerimaan;
+use App\Models\Qurban\QurbanTracking;
 use Carbon\Carbon;
+use Filament\Actions\Modal\Actions\Action;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -108,6 +111,15 @@ class QurbanPenerimaanResource extends Resource
                     ->searchable(),
                 Tables\Columns\IconColumn::make('disaksikan')
                     ->boolean(),
+                Tables\Columns\TextColumn::make('status_terakhir')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'diterima' => 'info',
+                        'disembelih' => 'warning',
+                        'diproses' => 'gray',
+                        'terkirim' => 'success',
+                        default => 'secondary',
+                    }),
                 Tables\Columns\TextColumn::make('hijri')
                     ->date('Y'),
                 Tables\Columns\TextColumn::make('nama_amil.name')
@@ -154,6 +166,37 @@ class QurbanPenerimaanResource extends Resource
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\Action::make('ubahStatus')
+                ->label('Ubah Status')
+                ->form([
+                    Forms\Components\Select::make('status')
+                        ->options([
+                            'diterima' => 'Diterima',
+                            'disembelih' => 'Disembelih',
+                            'diproses' => 'Diproses',
+                            'terkirim' => 'Terkirim',
+                        ])
+                        ->required(),
+                    Forms\Components\TextInput::make('keterangan')
+                        ->label('Keterangan'),
+                ])
+                ->action(function (array $data, $record) {
+                    // Update status di tabel utama
+                    $record->update([
+                        'status_terakhir' => $data['status'],
+                    ]);
+
+                    // Simpan ke history tracking
+                    QurbanTracking::create([
+                        'id_qurban_penerimaan' => $record->id,
+                        'status' => $data['status'],
+                        'keterangan' => $data['keterangan'],
+                        'petugas' => auth()->user()->id,
+                        'created_at' => now(),
+                    ]);
+                })
+                ->icon('heroicon-o-pencil-square'),
+
                 Tables\Actions\Action::make('print')
                     ->label('Print')
                     ->icon('heroicon-o-printer')

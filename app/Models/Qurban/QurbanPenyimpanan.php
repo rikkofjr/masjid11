@@ -13,6 +13,7 @@ class QurbanPenyimpanan extends Model
     protected $fillable = [
         'id',
         'nama_gudang_penyimpanan',
+        'target_stock',
     ];
 
     public function stock()

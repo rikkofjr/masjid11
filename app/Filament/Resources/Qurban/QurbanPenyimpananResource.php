@@ -2,10 +2,12 @@
 
 namespace App\Filament\Resources\Qurban;
 
+use Alkoumi\LaravelHijriDate\Hijri;
 use App\Filament\Resources\Qurban\QurbanPenyimpananResource\Pages;
 use App\Filament\Resources\Qurban\QurbanPenyimpananResource\RelationManagers;
 use App\Filament\Resources\Qurban\QurbanPenyimpananResource\RelationManagers\StockRelationManager;
 use App\Models\Qurban\QurbanPenyimpanan;
+use Carbon\Carbon;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -30,6 +32,9 @@ class QurbanPenyimpananResource extends Resource
                 Forms\Components\TextInput::make('nama_gudang_penyimpanan')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\TextInput::make('target_stock')
+                    ->numeric()
+                    ->maxLength(255),
             ]);
     }
 
@@ -40,18 +45,8 @@ class QurbanPenyimpananResource extends Resource
                 
                 Tables\Columns\TextColumn::make('nama_gudang_penyimpanan')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('total_stock')
-                    ->label('Total Stok')
-                    ->getStateUsing(function ($record) {
-                        return $record->stock()->sum('kuantitas');
-                    })
-                    ->sortable(),
-               Tables\Columns\TextColumn::make('last_stock_update')
-                ->label('Terakhir Update Stok')
-                ->getStateUsing(function ($record) {
-                    return optional($record->stock()->latest('created_at')->first())->created_at?->format('d-m-Y H:i');
-                })
-                ->sortable(),
+                Tables\Columns\TextColumn::make('target_stock')
+                    ->searchable(),
             ])
             ->filters([
                 //

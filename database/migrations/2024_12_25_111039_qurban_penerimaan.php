@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('nomor_handphone');
             $table->boolean('disaksikan')->default(true);
             $table->text('keterangan')->nullable();
+            $table->string('status_terakhir')->nullable();
             $table->date('hijri');
             $table->string('nomor_hewan')->nullable();
             $table->string('photo_hewan')->nullable();
