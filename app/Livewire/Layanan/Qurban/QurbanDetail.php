@@ -12,7 +12,6 @@ class QurbanDetail extends Component
     use LivewireAlert; 
 
     public $penerimaan;
-    public $showTracking = false;
 
     public function mount($id)
     {
@@ -49,10 +48,6 @@ class QurbanDetail extends Component
         }
     }
 
-    public function openTracking()
-    {
-        $this->showTracking = true;
-    }
     public function render()
     {
         return view('livewire.layanan.qurban.qurban-detail')->layout('components.layouts.layanan');
