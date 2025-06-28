@@ -32,7 +32,7 @@ class QurbanPemotonganOverview extends BaseWidget
         
         $jumlahSapi = QurbanPenerimaan::where('jenis_hewan', 'sapi')->whereYear('hijri', $year)->count();
         $jumlahSapiSaatIni = QurbanPenerimaan::where('jenis_hewan', 'sapi')->where('status_terakhir', 'diterima')->whereYear('hijri', $year)->count();
-        $jumlahSapiDisembelih = QurbanPenerimaan::where('jenis_hewan', 'sapi')->where('status_terakhir', '<>', 'disembelih')->whereYear('hijri', $year)->count();
+        $jumlahSapiDisembelih = QurbanPenerimaan::where('jenis_hewan', 'sapi')->where('status_terakhir', '<>', 'diterima')->whereYear('hijri', $year)->count();
         $jumlahSapiTerkirim = QurbanPenerimaan::where('jenis_hewan', 'sapi')->where('status_terakhir', 'terkirim')->whereYear('hijri', $year)->count();
         
         $jumlahHewan = QurbanPenerimaan::whereYear('hijri', $year)->count();
