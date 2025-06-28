@@ -152,9 +152,7 @@
           <img src="{{ asset('storage/' . $data->photo_hewan) }}" alt="Foto Hewan">
         </div>
         <div>
-          {!! QrCode::size(100)->generate(
-                                  route('qurban.detail', $data->id)
-                                  ) !!}
+          {!! QrCode::size(100)->generate(route('qurban.detail', $data->id)) !!}
         </div>
       </div>
       <div class="footer">
@@ -197,7 +195,7 @@
           <img src="{{ asset('storage/' . $data->photo_hewan) }}" alt="Foto Hewan">
         </div>
         <div>
-          {!! QrCode::size(100)->generate(url('/print/qurban/detail/4')) !!}
+          {!! QrCode::size(100)->generate(route('qurban.detail', $data->id)) !!}
         </div>
       </div>
       <div class="footer">

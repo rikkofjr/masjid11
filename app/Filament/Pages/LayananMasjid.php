@@ -22,9 +22,9 @@ class LayananMasjid extends Page
 
     public function getHeaderWidgets():array {
         return [
+            KasOverview::class,
             PenerimaanKasChart::class,
             PengeluaranKasChart::class,
-            KasOverview::class,
             JamaahOverview::class,
             
         ];

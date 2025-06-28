@@ -21,7 +21,11 @@ class QurbanDetail extends Component
 
     public function nextStatus()
     {
-        $statuses = ['diterima', 'disembelih', 'diproses', 'terkirim'];
+        $statuses = [
+            'diterima', 
+            'disembelih', 
+            'diproses', 
+            'terkirim'];
         $currentIndex = array_search($this->penerimaan->status_terakhir, $statuses);
 
         if ($currentIndex !== false && $currentIndex < count($statuses) - 1) {

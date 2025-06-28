@@ -21,7 +21,12 @@ class KasOverview extends BaseWidget
     {
         $sisaSaldo = TransaksiKas::sum('penerimaan') - TransaksiKas::sum('pengeluaran') ;
         return [
-            Stat::make('Sisa Saldo' , number_format($sisaSaldo)),
+            Stat::make('Sisa Saldo' , number_format($sisaSaldo))
+                ->extraAttributes(['class' => 'col-span-2']),
         ];
+    }
+    protected function getColumns(): int
+    {
+        return 12; // misal total 4 kolom per baris
     }
 }
