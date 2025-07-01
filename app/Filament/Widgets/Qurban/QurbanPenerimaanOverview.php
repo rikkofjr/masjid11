@@ -27,8 +27,8 @@ class QurbanPenerimaanOverview extends BaseWidget
         $year = request()->query('filters')['hijri'] ?? $nowHijriYear;
         
 
-        $jumlahKambing = QurbanPenerimaan::where('jenis_hewan', 'kambing')->where('status_terakhir', 'diterima')->whereYear('hijri', $year)->count();
-        $jumlahSapi = QurbanPenerimaan::where('jenis_hewan', 'sapi')->where('status_terakhir', 'diterima')->whereYear('hijri', $year)->count();
+        $jumlahKambing = QurbanPenerimaan::where('jenis_hewan', 'kambing')->whereYear('hijri', $year)->count();
+        $jumlahSapi = QurbanPenerimaan::where('jenis_hewan', 'sapi')->whereYear('hijri', $year)->count();
         // Jika ada filter tahun yang dipilih, hitung total berdasarkan tahun tersebut
         // if ($year) {
             

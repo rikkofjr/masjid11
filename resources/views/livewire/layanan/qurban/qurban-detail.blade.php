@@ -46,7 +46,7 @@
                     </tr>
                     <tr class="border-b">
                         <th class="p-2 text-left font-semibold">Nama Lain</th>
-                        <td class="p-2">{{ $penerimaan->nama_lain }}</td>
+                        <td class="p-2">{!! nl2br(e( $penerimaan->nama_lain)) !!}</td>
                     </tr>
                     <tr class="border-b">
                         <th class="p-2 text-left font-semibold">No - Jenis Hewan</th>
@@ -86,14 +86,16 @@
 
         <!-- Tombol Update -->
         @if ($penerimaan->status_terakhir != 'terkirim')
-            <div
+            <button
+                type="button"
                 wire:click.debounce.500ms="nextStatus"
                 wire:loading.class="opacity-50 cursor-not-allowed"
                 wire:loading.attr="disabled"
-                class="flex items-center justify-center font-semibold text-black text-lg gap-3 transition ease-in-out duration-300 bg-green-600 py-5 px-6 fixed bottom-0 left-0 w-full text-center cursor-pointer z-50"
-            >
+                class="flex items-center justify-center font-semibold text-black text-lg gap-3 transition ease-in-out duration-300 bg-green-600 py-5 px-6 fixed bottom-0 left-0 w-full text-center z-50"
+                >
                 Update ke Status Selanjutnya
-            </div>
+            </button>
+
 
         @endif
 

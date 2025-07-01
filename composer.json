@@ -16,6 +16,7 @@
         "livewire/livewire": "^3.5",
         "midtrans/midtrans-php": "^2.6",
         "mike42/escpos-php": "^4.0",
+        "pxlrbt/filament-excel": "^2.4",
         "realrashid/sweet-alert": "^7.2",
         "simplesoftwareio/simple-qrcode": "^4.2",
         "spatie/laravel-image-optimizer": "^1.8",
