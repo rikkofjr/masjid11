@@ -37,7 +37,7 @@ class QurbanPenyimpananOverview extends BaseWidget
 
             $persentase = $gudang->target_stock ? round(($totalKeluar / $gudang->target_stock) * 100, 2) : 0;
 
-            $cards[] = Card::make($gudang->nama_gudang_penyimpanan, $sisa)
+            $cards[] = Card::make('Stock '. $gudang->nama_gudang_penyimpanan, $sisa)
             ->description(
                 "Masuk: $totalMasuk | 
                 Keluar: $totalKeluar | 

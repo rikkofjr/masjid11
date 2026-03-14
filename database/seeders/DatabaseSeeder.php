@@ -41,6 +41,7 @@ class DatabaseSeeder extends Seeder
             'nama_masjid' => 'Masjid Al Masjid Dev',
             'alamat_masjid' => 'Jl. Masjid Dev.',
             'no_handphone' => '021-0999039309',
+            'logo' => '',
             'is_active' => true,
         ]);
     }

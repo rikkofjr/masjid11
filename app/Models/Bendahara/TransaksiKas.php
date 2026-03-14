@@ -19,14 +19,14 @@ class TransaksiKas extends Model
         'penerimaan',
         'pengeluaran',
         'tipe',
-        'id_penanggung_jawab'
+        'petugas'
     ];
 
     public function kelompok_transaksi(){
         return $this->belongsTo(KelompokTransaksi::class, 'id_kelompok_transaksi');
     }
-    public function penanggung_jawab(){
-        return $this->belongsTo(User::class, 'id_penanggung_jawab');
+    public function profile_petugas(){
+        return $this->belongsTo(User::class, 'petugas');
     }
     public function jenis_pembayaran(){
         return $this->belongsTo(JenisPembayaran::class, 'id_jenis_pembayaran');

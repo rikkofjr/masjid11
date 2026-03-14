@@ -142,7 +142,7 @@
             <tr><td class="label">No. HP</td><td>: {{$data->nomor_handphone}}</td></tr>
             <tr><td class="label">Disaksikan</td><td>: {{ $data->disaksikan ? '✔️' : 'x' }}</td></tr>
             <tr><td class="label">Keterangan</td><td>: {!! nl2br(e($data->keterngan)) !!}</td></tr>
-            <tr><td class="label">Panitia</td><td>: {{$data->nama_amil->name}}</td></tr>
+            <tr><td class="label">Panitia</td><td>: {{$data->profile_petugas->name}}</td></tr>
             <tr><td class="label">Permintaan</td><td>{!! nl2br(e($data->permintaan)) !!}</td></tr>
           </table>
         </div>
@@ -185,7 +185,7 @@
             <tr><td class="label">No. HP</td><td>: {{$data->nomor_handphone}}</td></tr>
             <tr><td class="label">Disaksikan</td><td>: {{ $data->disaksikan ? '✔️' : 'x' }}</td></tr>
             <tr><td class="label">Keterangan</td><td>: {!! nl2br(e($data->keterngan)) !!}</td></tr>
-            <tr><td class="label">Panitia</td><td>: {{$data->nama_amil->name}}</td></tr>
+            <tr><td class="label">Panitia</td><td>: {{$data->profile_petugas->name}}</td></tr>
             <tr><td class="label">Permintaan</td><td>{!! nl2br(e($data->permintaan)) !!}</td></tr>
           </table>
         </div>

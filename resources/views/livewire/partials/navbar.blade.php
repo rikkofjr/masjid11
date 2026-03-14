@@ -11,15 +11,15 @@
 
   <ul class="hidden lg:block lg:flex flex-col lg:flex-row lg:items-center lg:space-x-20" :class="{'hidden':!navbarOpen,'flex':navbarOpen}">
       <li class="font-medium text-green-500 text-lg hover:text-green-300 transition ease-in-out duration-300 mb-5 lg:mb-0">
-          <a href="#">Services</a>
+          <a href="/">Home</a>
       </li>
 
       <li class="font-medium text-green-500 text-lg hover:text-green-300 transition ease-in-out duration-300 mb-5 lg:mb-0">
-          <a href="#">Works</a>
+          <a href="{{route('agenda.index')}}">Agenda Masjid</a>
       </li>
 
       <li class="font-medium text-green-500 text-lg hover:text-green-300 transition ease-in-out duration-300 mb-5 lg:mb-0">
-          <a href="#">Blog</a>
+          <a href="{{route('artikel.index')}}">Artikel</a>
       </li>
 
      <li class="px-8 py-3 font-medium text-green-500 text-lg text-center border-2 border-green-500 rounded-md hover:bg-green-500 hover:text-white transition ease-linear duration-300">

@@ -43,7 +43,7 @@ class KelompokTransaksiResource extends Resource
                 Forms\Components\TextInput::make('nama')
                     ->required(),
 
-                Forms\Components\Hidden::make('id_penanggung_jawab')
+                Forms\Components\Hidden::make('petugas')
                 ->default(auth()->id()),
                     
 
@@ -51,7 +51,7 @@ class KelompokTransaksiResource extends Resource
     }
     public static function creating(Task $task)
     {
-        $task->id_penanggung_jawab = auth()->id();
+        $task->petugas = auth()->id();
     }
 
     public static function table(Table $table): Table
@@ -98,7 +98,7 @@ class KelompokTransaksiResource extends Resource
     public static function mutateFormDataBeforeCreate(array $data): array
     {
 
-        $data['id_penanggung_jawab'] = auth()->id();
+        $data['petugas'] = auth()->id();
     
         return $data;
     }

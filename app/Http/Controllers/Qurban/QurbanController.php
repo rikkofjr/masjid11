@@ -19,7 +19,7 @@ class QurbanController extends Controller
     protected $ProfileMasjidRepository;
 
     public function print($id){
-        $data = QurbanPenerimaan::with('nama_amil')->findOrFail($id);
+        $data = QurbanPenerimaan::with('profile_petugas')->findOrFail($id);
         // $profileMasjid = ProfileMasjid::where('is_active', true)->orderby('created_at, 'desc')->limit(1);
         $profileMasjid = $this->ProfileMasjidRepository->first();
 

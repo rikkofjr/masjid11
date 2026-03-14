@@ -14,7 +14,7 @@ class CreateJamaahKeluarga extends CreateRecord
     protected function mutateFormDataBeforeCreate(array $data): array
     {
 
-        $data['id_penanggung_jawab'] = auth()->user()->id;
+        $data['petugas'] = auth()->user()->id;
 
         return $data;
     }

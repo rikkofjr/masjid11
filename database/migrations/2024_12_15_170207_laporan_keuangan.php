@@ -15,7 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary()->unique();
             $table->string('nomor_kelompok_kas')->unique();
             $table->string('nama');
-            $table->foreignUuid('id_penanggung_jawab')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreignUuid('petugas')->references('id')->on('users')->cascadeOnDelete();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,7 +29,7 @@ return new class extends Migration
             $table->integer('pengeluaran')->nullable();
             $table->enum('tipe', ['penerimaan', 'pengeluaran'])->default('penerimaan');
             $table->foreignUuid('id_jenis_pembayaran')->references('id')->on('tb_jenis_pembayaran')->cascadeOnDelete();
-            $table->foreignUuid('id_penanggung_jawab')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreignUuid('petugas')->references('id')->on('users')->cascadeOnDelete();
             $table->timestamps();
             $table->softDeletes();
         });

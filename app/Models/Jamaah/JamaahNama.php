@@ -14,7 +14,7 @@ class JamaahNama extends Model
         'id_jamaah_keluarga',
         'nama_jamaah',
         'tanggal_lahir',
-        'id_penanggung_jawab',
+        'petugas',
     ];
 
     public function jamaah_keluarga(){

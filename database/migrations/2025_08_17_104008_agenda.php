@@ -11,13 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tb_displays', function (Blueprint $table) {
+        Schema::create('tb_agenda', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_agenda');
+            $table->date('tanggal');
+            $table->time('jam_mulai');
+            $table->time('jam_selesai');
             $table->foreignUuid('petugas')->references('id')->on('users')->nullable();
-            $table->string('photo_display');
-            $table->string('keterangan');
-            $table->string('is_active')->default(true);
+            $table->string('catatan');
+            $table->string('status');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tb_displays');
+        Schema::dropIfExists('tb_agenda');
     }
 };

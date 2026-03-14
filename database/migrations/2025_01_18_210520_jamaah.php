@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('status');
             $table->string('nama_keluarga');
             $table->text('alamat');
-            $table->foreignUuid('id_penanggung_jawab')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreignUuid('petugas')->references('id')->on('users')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -27,7 +27,7 @@ return new class extends Migration
             $table->foreignUuid('id_jamaah_keluarga')->references('id')->on('tb_jamaah_keluarga')->cascadeOnDelete();
             $table->string('nama_jamaah');
             $table->date('tanggal_lahir');
-            $table->foreignUuid('id_penanggung_jawab')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreignUuid('petugas')->references('id')->on('users')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

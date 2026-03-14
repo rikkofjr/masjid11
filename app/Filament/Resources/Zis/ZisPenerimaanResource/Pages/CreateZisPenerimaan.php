@@ -27,6 +27,7 @@ use Illuminate\Support\Number;
 class CreateZisPenerimaan extends CreateRecord
 {
     use HasWizard;
+    
     protected static string $resource = ZisPenerimaanResource::class;
 
 
@@ -38,9 +39,7 @@ class CreateZisPenerimaan extends CreateRecord
         return [
             Step::make('Informasi Pembayaran')
             ->schema([
-                Hidden::make('amil')
-                ->required()
-                ->default(auth()->user()->id),
+
                        
                 Forms\Components\Select::make('id_jenis_zis')
                 ->label('Jenis Zakat Yang dibayar')
@@ -236,6 +235,7 @@ class CreateZisPenerimaan extends CreateRecord
             $data['id_jenis_pembayaran'] = JenisPembayaran::where('short_name', 'beras')->value('id');
             $data['beras'] = $data['beras_perjiwa'] * $data['jumlah_jiwa'];
         }
+        $data['petugas'] = auth()->user()->id;
        
     
         return $data;

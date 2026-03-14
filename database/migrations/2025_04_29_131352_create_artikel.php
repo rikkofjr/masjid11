@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('tb_artikel', function (Blueprint $table) {
             $table->id();
+            $table->foreignUuid('petugas')->references('id')->on('users')->nullable();
             $table->mediumText('judul_artikel');
             $table->longText('deskripsi');
             $table->string('photo');

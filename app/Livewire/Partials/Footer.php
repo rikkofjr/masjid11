@@ -2,19 +2,21 @@
 
 namespace App\Livewire\Partials;
 
+use App\Repositories\ProfileMasjidRepositoryInterface;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
 class Footer extends Component
 {
-    // public $total_count = 0;
-
-    // public function mount(){
-
-    // }
+    protected $ProfileMasjidRepository;
+    public function mount(ProfileMasjidRepositoryInterface $ProfileMasjidRepository)
+    {
+        $this->ProfileMasjidRepository = $ProfileMasjidRepository;
+    }
 
     public function render()
     {
-        return view('livewire.partials.footer');
+        $profileMasjid = $this->ProfileMasjidRepository->first();
+        return view('livewire.partials.footer', compact('profileMasjid')) ;
     }
 }

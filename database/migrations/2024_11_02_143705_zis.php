@@ -32,8 +32,8 @@ return new class extends Migration
 
         Schema::create('tb_zis_penerimaan', function (Blueprint $table) {
             $table->uuid('id')->primary()->unique();
-            $table->string('amil');
-            $table->string('amil_editor')->nullable();
+            $table->foreignUuid('petugas')->references('id')->on('users')->nullable();
+            $table->string('petugas_editor')->nullable();
             $table->foreignUuid('id_jenis_zis')->references('id')->on('tb_jenis_zis');
             $table->text('atas_nama');
             $table->text('nama_lain')->nullable();

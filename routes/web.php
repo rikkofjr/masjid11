@@ -5,6 +5,9 @@ use App\Http\Controllers\Payment\MidtransPaymentController;
 use App\Http\Controllers\Print\PrintController;
 use App\Http\Controllers\Qurban\QurbanController;
 use App\Http\Controllers\Zis\ZisController;
+use App\Livewire\AgendaCalendar;
+use App\Livewire\Artikel\ArtikelDetail;
+use App\Livewire\Artikel\ArtikelIndex;
 use App\Livewire\Auth\LoginPage;
 use App\Livewire\HomePage;
 use App\Livewire\Layanan\FEPembayaranZisOpener;
@@ -13,9 +16,9 @@ use App\Livewire\Layanan\ConfirmPembayaranZis;
 use App\Livewire\Layanan\Qurban\QurbanDetail;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/login', LoginPage::class)->name('login');
 
@@ -45,6 +48,7 @@ Route::group(['prefix' => 'display'],function(){
     Route::get('/2', [DisplayController::class, 'display2'])->name('display.2');
 });
 
+
 Route::middleware('auth')->group(function() {
 
     Route::get('/layanan/zis-opener', FEPembayaranZisOpener::class)->name('layanan-pembayaran-zis-opener');
@@ -58,4 +62,11 @@ Route::middleware('auth')->group(function() {
 
 
 
+Route::group(['prefix' => 'artikel'],function(){
+    Route::get('/', ArtikelIndex::class)->name('artikel.index');
+    Route::get('/{id}', ArtikelDetail::class)->name('artikel.detail');
+});
+Route::group(['prefix' => 'agenda'],function(){
+    Route::get('/', AgendaCalendar::class)->name('agenda.index');
+});
 

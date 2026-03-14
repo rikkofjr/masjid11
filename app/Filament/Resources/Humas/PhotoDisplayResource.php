@@ -20,6 +20,8 @@ class PhotoDisplayResource extends Resource
     protected static ?string $model = Display::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ? string $navigationLabel = 'Display';
+    protected static ?string $navigationGroup = 'Humas';
 
     public static function form(Form $form): Form
     {

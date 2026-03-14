@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('tb_program_masjid', function (Blueprint $table) {
             $table->id();
+            $table->foreignUuid('petugas')->references('id')->on('users')->nullable();
             $table->mediumText('judul_program');
             $table->mediumText('deskripsi');
             $table->string('photo');

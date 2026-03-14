@@ -18,6 +18,8 @@ class ArtikelResource extends Resource
     protected static ?string $model = Artikel::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ? string $navigationLabel = 'Artikel';
+    protected static ?string $navigationGroup = 'Humas';
 
     public static function form(Form $form): Form
     {
@@ -48,6 +50,7 @@ class ArtikelResource extends Resource
                 Tables\Columns\TextColumn::make('judul_artikel'),
                 Tables\Columns\IconColumn::make('is_active')
                     ->boolean(),
+                Tables\Columns\TextColumn::make('profile_petugas.name'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

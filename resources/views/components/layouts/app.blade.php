@@ -5,9 +5,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <title>{{ $title ?? 'Page Title' }}</title>
+        <title>@yield('title')</title>
+        
         
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        @stack('styles')
+        
         @livewireStyles
 
         <!-- PWA  -->
@@ -19,33 +23,16 @@
         <livewire:partials.navbar/>
 
         <main class="">
-            
             {{ $slot }}
         </main>
                     
         <livewire:partials.footer/>
         @livewireScripts
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        
+        @stack('scripts')
+        
   
         <x-livewire-alert::scripts />
-        <!--
-        <script src="{{ asset('/sw.js') }}"></script>
-        <script>
-        if ("serviceWorker" in navigator) {
-            // Register a service worker hosted at the root of the
-            // site using the default scope.
-            navigator.serviceWorker.register("/sw.js").then(
-            (registration) => {
-                console.log("Service worker registration succeeded:", registration);
-            },
-            (error) => {
-                console.error(`Service worker registration failed: ${error}`);
-            },
-            );
-        } else {
-            console.error("Service workers are not supported.");
-        }
-        </script>
-    -->
+       
     </body>
 </html>

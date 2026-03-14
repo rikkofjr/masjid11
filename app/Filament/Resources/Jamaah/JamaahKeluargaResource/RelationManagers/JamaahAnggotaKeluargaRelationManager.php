@@ -26,7 +26,7 @@ class JamaahAnggotaKeluargaRelationManager extends RelationManager
                     DatePicker::make('tanggal_lahir')
                     ->required(),
 
-                Forms\Components\Hidden::make('id_penanggung_jawab')
+                Forms\Components\Hidden::make('petugas')
                     ->default(auth()->user()->id),
             ]);
     }
@@ -57,7 +57,7 @@ class JamaahAnggotaKeluargaRelationManager extends RelationManager
     protected function mutateFormDataBeforeCreate(array $data): array
     {
 
-        $data['id_penanggung_jawab'] = auth()->user()->id;
+        $data['petugas'] = auth()->user()->id;
 
         return $data;
     }

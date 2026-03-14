@@ -78,10 +78,7 @@
                 @endforelse
             </div>
 
-            <button wire:click="$set('showTracking', false)"
-                class="mt-6 w-full bg-gray-600 hover:bg-gray-700 text-white py-2 rounded shadow">
-                Tutup
-            </button>
+            
         </div>
 
         <!-- Tombol Update -->

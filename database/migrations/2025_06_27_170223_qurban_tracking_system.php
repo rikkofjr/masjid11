@@ -16,11 +16,10 @@ return new class extends Migration
             $table->uuid('id_qurban_penerimaan');
             $table->string('status');
             $table->string('keterangan')->nullable();
-            $table->uuid('petugas')->nullable();
             $table->timestamps();
 
             $table->foreign('id_qurban_penerimaan')->references('id')->on('tb_qurban_penerimaan')->onDelete('cascade');
-            $table->foreign('petugas')->references('id')->on('users');
+            $table->foreignUuid('petugas')->references('id')->on('users')->nullable();
             
         });
     }

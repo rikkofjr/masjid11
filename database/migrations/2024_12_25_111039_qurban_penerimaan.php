@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tb_qurban_penerimaan', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('amil');
+            $table->foreignUuid('petugas')->references('id')->on('users')->nullable();
             $table->string('jenis_hewan');
             $table->text('atas_nama');
             $table->text('nama_lain')->nullable();
@@ -29,7 +29,6 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('amil')->references('id')->on('users');
         });
     }
 

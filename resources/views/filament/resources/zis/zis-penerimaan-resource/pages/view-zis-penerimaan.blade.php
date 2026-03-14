@@ -63,7 +63,7 @@
         </tr>
         <tr style="border:solid 0.5px #ccc">
             <td width="10%">Amil</td>
-            <td>: {{$viewZisPenerimaan->nama_amil->name}}</td>
+            <td>: {{$viewZisPenerimaan->profile_petugas->name}}</td>
         </tr>
         <tr style="border:solid 0.5px #ccc">
             <td width="10%">Tanggal Pembayaran</td>

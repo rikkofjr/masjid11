@@ -23,7 +23,7 @@ return new class extends Migration
             $table->integer('kuantitas');
             $table->string('status');
             $table->foreignUuid('id_qurban_penyimpanan')->references('id')->on('tb_qurban_penyimpanan')->nullable();
-            $table->foreignUuid('id_user')->references('id')->on('users')->nullable();
+            $table->foreignUuid('petugas')->references('id')->on('users')->nullable();
             $table->date('hijri');
             $table->timestamps();
             $table->softDeletes();

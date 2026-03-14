@@ -13,8 +13,8 @@ class ZisPenerimaan extends Model
     use HasUuids, SoftDeletes;
     protected $table = 'tb_zis_penerimaan';
     protected $fillable = [
-        'amil',
-        'amil_editor',
+        'petugas',
+        'petugas_editor',
         'id_jenis_zis',
         'atas_nama',
         'nama_lain',
@@ -31,8 +31,8 @@ class ZisPenerimaan extends Model
     ];
 
 
-    public function nama_amil(){
-        return $this->belongsTo(User::class, 'amil');
+    public function profile_petugas(){
+        return $this->belongsTo(User::class, 'petugas');
     }
     
     public function jenis_zis(){

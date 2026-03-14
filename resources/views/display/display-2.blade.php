@@ -144,7 +144,8 @@
             <img src="{{ $profileMasjid->logo ? asset('storage/' . $profileMasjid->logo) : asset('img/logo.png') }}"
                  alt="Logo Masjid"
                  class="h-12 mr-4 cursor-pointer"
-                 id="fullscreenLogo">
+                 id="fullscreenLogo"
+                 height="100px">
             <div>
                 <div id="currentDate"></div>
                 <div id="currentHijriDate" class="text-sm"></div>

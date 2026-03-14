@@ -82,7 +82,7 @@ class CreateTransaksiKas extends CreateRecord
         if($data['tipe'] == 'pengeluaran'){
             $data['pengeluaran'] = $data['uang'];
         }
-        $data['id_penanggung_jawab'] = auth()->id();
+        $data['petugas'] = auth()->id();
     
         return $data;
     }

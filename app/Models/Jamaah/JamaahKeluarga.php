@@ -16,14 +16,14 @@ class JamaahKeluarga extends Model
         'status',
         'nama_keluarga',
         'alamat',
-        'id_penanggung_jawab',
+        'petugas',
     ];
 
     public function jamaah_anggota_keluarga(){
         return $this->hasMany(JamaahNama::class, 'id_jamaah_keluarga');
     }
     
-    public function penanggung_jawab(){
+    public function profile_petugas(){
         return $this->belongsTo(User::class, 'id_penanggung_jawab');
     }
 }

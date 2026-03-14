@@ -14,7 +14,7 @@ class QurbanPenerimaan extends Model
     protected $table = "tb_qurban_penerimaan";
     protected $fillable = [
         'id',
-        'amil',
+        'petugas',
         'jenis_hewan',
         'atas_nama',
         'nama_lain',
@@ -30,8 +30,8 @@ class QurbanPenerimaan extends Model
 
     ];
 
-    public function nama_amil(){
-        return $this->belongsTo(User::class, 'amil');
+    public function profile_petugas(){
+        return $this->belongsTo(User::class, 'petugas');
     }
 
     public function trackings(){

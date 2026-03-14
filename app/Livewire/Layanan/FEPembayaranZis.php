@@ -19,8 +19,8 @@ class FEPembayaranZis extends Component
     use LivewireAlert;
 
     public $currentStep = 1;
-    public $amil, 
-        $amil_editor, 
+    public $petugas, 
+        $petugas_editor, 
         $id_jenis_zis, 
         $nama_jenis_zis,
         $atas_nama,
@@ -133,7 +133,7 @@ class FEPembayaranZis extends Component
         }
         
         $post = ZisPenerimaan::create([
-            'amil' => Auth::user()->id,  
+            'petugas' => Auth::user()->id,  
             'id_jenis_zis' => $this->id_jenis_zis, 
             'atas_nama' => $this->atas_nama,
             'nama_lain' => $this->nama_lain,
@@ -206,8 +206,8 @@ class FEPembayaranZis extends Component
     public function clearForm()
     {
         
-        $this->amil = '';
-        $this->amil_editor= ''; 
+        $this->petugas = '';
+        $this->petugas_editor= ''; 
         $this->id_jenis_zis= ''; 
         $this->atas_nama= '';
         $this->nama_lain= '';

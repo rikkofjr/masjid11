@@ -1,21 +1,23 @@
 <?php
 
-namespace App\Filament\Resources\Humas\ArtikelResource\Pages;
+namespace App\Filament\Resources\Humas\AgendaResource\Pages;
 
-use App\Filament\Resources\Humas\ArtikelResource;
+use App\Filament\Resources\Humas\AgendaResource;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 
-class CreateArtikel extends CreateRecord
+class CreateAgenda extends CreateRecord
 {
-    protected static string $resource = ArtikelResource::class;
+    protected static string $resource = AgendaResource::class;
+
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
-
         // Set data tambahan otomatis
         $data['petugas'] = auth()->user()->id;
 
         return $data;
     }
+
+
 }

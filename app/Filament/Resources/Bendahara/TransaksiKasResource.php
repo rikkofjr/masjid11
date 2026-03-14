@@ -145,6 +145,8 @@ class TransaksiKasResource extends Resource
                     ->summarize([
                         Tables\Columns\Summarizers\Sum::make()
                     ]),
+                Tables\Columns\TextColumn::make('profile_petugas.name')
+                    ->searchable(),
             ])
             ->filters([
                 

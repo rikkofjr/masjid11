@@ -13,6 +13,6 @@ class KelompokTransaksi extends Model
     protected $fillable = [
         'nama',
         'nomor_kelompok_kas',
-        'id_penanggung_jawab'
+        'petugas'
     ];
 }

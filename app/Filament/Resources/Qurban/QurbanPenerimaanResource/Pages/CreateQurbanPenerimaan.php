@@ -24,7 +24,7 @@ class CreateQurbanPenerimaan extends CreateRecord
         $nowHijriyear = Hijri::Date('Y', $date);
 
         // Set data tambahan otomatis
-        $data['amil'] = auth()->user()->id;
+        $data['petugas'] = auth()->user()->id;
         $data['status_terakhir'] = 'diterima';
         $data['hijri'] = Hijri::ShortDate($date);
         $data['nomor_hewan'] = Helper::qurbanNomorHewan(new QurbanPenerimaan(), $nowHijriyear, $data['jenis_hewan']);
@@ -45,7 +45,7 @@ class CreateQurbanPenerimaan extends CreateRecord
             'id_qurban_penerimaan' => $qurban->id,
             'status' => 'diterima',
             'keterangan' => 'Hewan qurban diterima oleh panitia',
-            'petugas' => $qurban->amil,
+            'petugas' => $qurban->petugas,
         ]);
     }
 }

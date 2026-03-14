@@ -124,7 +124,7 @@ class QurbanPenerimaanResource extends Resource
                     }),
                 Tables\Columns\TextColumn::make('hijri')
                     ->date('Y'),
-                Tables\Columns\TextColumn::make('nama_amil.name')
+                Tables\Columns\TextColumn::make('profile_petugas.name')
                     ->searchable(),
                 
                 Tables\Columns\TextColumn::make('created_at')

@@ -38,7 +38,7 @@ class ZisPenerimaanPolicy
      */
     public function update(User $user, ZisPenerimaan $zisPenerimaan): bool
     {
-        if($user->id == $zisPenerimaan->amil || $user->can('Manage : Zis')){
+        if($user->id == $zisPenerimaan->petugas || $user->can('Manage : Zis')){
             return true;
         }
 

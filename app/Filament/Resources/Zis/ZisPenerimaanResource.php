@@ -40,7 +40,9 @@ class ZisPenerimaanResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([]);
+            ->schema([
+                
+            ]);
     }
 
     public static function table(Table $table): Table
@@ -105,7 +107,7 @@ class ZisPenerimaanResource extends Resource
                 Tables\Columns\TextColumn::make('status_pembayaran')
                     ->searchable(),
                     
-                Tables\Columns\TextColumn::make('nama_amil.name')
+                Tables\Columns\TextColumn::make('profile_petugas.name')
                     ->label('Nama Amil')
                     ->searchable(),
 
